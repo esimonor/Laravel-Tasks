@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', TaskController::class);
+
+Route::get('/', 'TaskController@index');
+Route::post('/create', 'TaskController@store');
+Route::get('/delete/{id}', 'TaskController@destroy');
