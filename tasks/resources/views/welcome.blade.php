@@ -23,7 +23,7 @@
     <body class="antialiased">
         <div style="border:1px solid black">
             <h3>Add new task</h3>
-            <form method="POST" action="/create">
+            <form method="POST" action="/tasks">
             @csrf
                 <input style="border:1px solid black" type="text" name="name" placeholder="Input task name">
                 <input type="submit" value="Add task">
@@ -32,7 +32,8 @@
         <div style="border:1px solid black;">
             @foreach($allTasks as $task)
                 <div style="border-bottom:2px solid black">
-                    <form method="POST" action="/delete/{{$task->id}}">
+                    <form method="POST" action="/tasks/{{$task->id}}">
+                    @csrf
                     @method('DELETE')
                         <p>{{$task->name}}</p>
                         <input type="submit" value="Delete">
