@@ -13,7 +13,9 @@ class TaskController extends Controller
      */
     public function index()
     {
+        // Store all the tasks in a variable named tasks
         $tasks = \App\Models\Tasks::all();
+        // Return the view with the variable named 'allTasks'
         return view('welcome', ['allTasks' => $tasks]);
     }
 
@@ -83,7 +85,9 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
+        // Calls destroy method on the ID sent on the URL
         \App\Models\Tasks::destroy($id);
+        // Redirects to index
         return redirect('/');
     }
 }

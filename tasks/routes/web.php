@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Take all the resources (index, show, destroy, etc)
 Route::resource('/tasks', TaskController::class);
 
+//Show index of the page
 Route::get('/', 'TaskController@index');
 
+//Delete something from the database, needs the ID
 Route::post('/tasks/{id}', 'TaskController@destroy');
 /*
     Route::post('/create', 'TaskController@store');
