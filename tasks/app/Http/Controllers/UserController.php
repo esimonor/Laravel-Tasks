@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +13,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        // Store all the tasks in a variable named tasks
-        $tasks = \App\Models\Tasks::all();
-        $users = \App\Models\User::all();
-        // Return the view with the variable named 'allTasks'
-        return view('welcome', ['allTasks' => $tasks], ['allUsers' => $users]);
+        //
     }
 
     /**
@@ -38,8 +34,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        \App\Models\Tasks::create([
+        \App\Models\User::create([
             'name' => $request->get('name'),
+            'lastname' => $request->get('lastname'),
             ]);
         return redirect('/');
     }
@@ -86,9 +83,6 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        // Calls destroy method on the ID sent on the URL
-        \App\Models\Tasks::destroy($id);
-        // Redirects to index
-        return redirect('/');
+        //
     }
 }

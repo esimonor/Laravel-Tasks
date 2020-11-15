@@ -22,6 +22,10 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function task(){
+        return $this->hasOne('App\Models\Tasks');
+     }
+
     /**
      * The attributes that should be hidden for arrays.
      *

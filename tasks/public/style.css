@@ -18,3 +18,17 @@ body {
     color:white;
     border:1px solid white;
 }
+
+.left{
+    float: left;
+    border:1px solid black;
+    width: 35%;
+    margin-left: 15%;
+    border-bottom: 0px;
+}
+.right{
+    border:1px solid black;
+    margin-right: 15%;
+    margin-left: 15%;
+    border-bottom: 0px;
+}

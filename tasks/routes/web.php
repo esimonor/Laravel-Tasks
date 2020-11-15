@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Take all the resources (index, show, destroy, etc)
+Route::resource('/user', UserController::class);
+
+// Take all the resources (index, show, destroy, etc)
 Route::resource('/tasks', TaskController::class);
 
 //Show index of the page

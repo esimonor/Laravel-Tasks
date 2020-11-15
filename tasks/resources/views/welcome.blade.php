@@ -16,7 +16,17 @@
         </style>
     </head>
     <body class="antialiased">
-    <h1>TASK ORGANIZER</h1>
+        <h1>TASK ORGANIZER</h1>
+        <div class="center" style="border:1px solid black">
+                <h3>Add new User</h3>
+                <form method="POST" action="/user">
+                @csrf
+                    <input style="border:1px solid black" type="text" name="name" placeholder="Input user name">
+                    <input style="border:1px solid black" type="text" name="lastname" placeholder="Input last name">
+                    <input class="button" type="submit" value="Add user">
+                </form>
+        </div>
+        <div style="display:inline">
         <div class="center" style="border:1px solid black">
             <h3>Add new task</h3>
             <form method="POST" action="/tasks">
@@ -25,19 +35,31 @@
                 <input class="button" type="submit" value="Add task">
             </form>
         </div>
+
         <br>
-        <div class="center"  style="border:1px solid black;">
-        <h3>To do:</h3>
-            @foreach($allTasks as $task)
+
+        <div class="left">
+            <h3>To do:</h3>
+                @foreach($allTasks as $task)
+                    <div style="border-bottom:2px solid black">
+                        <form method="POST" action="/tasks/{{$task->id}}">
+                        @csrf
+                        @method('DELETE')
+                            <b>{{$task->name}}</b>
+                            <input class="button" type="submit" value="Delete">
+                        </form>
+                    </div>
+                @endforeach
+        </div>
+
+        <div class="right">
+            <h3>User:</h3>
+            @foreach ($allUsers as $user)
                 <div style="border-bottom:2px solid black">
-                    <form method="POST" action="/tasks/{{$task->id}}">
-                    @csrf
-                    @method('DELETE')
-                        <b>{{$task->name}}</b>
-                        <input class="button" type="submit" value="Delete">
-                    </form>
+                <b>{{$user->name}}</b>
                 </div>
             @endforeach
         </div>
+</div>
     </body>
 </html>
