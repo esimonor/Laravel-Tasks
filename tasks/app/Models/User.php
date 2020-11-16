@@ -18,13 +18,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'lastname',
         'password',
     ];
 
     public function task(){
-        return $this->hasOne('App\Models\Tasks');
-     }
+        return $this->hasMany('App\Models\Tasks');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

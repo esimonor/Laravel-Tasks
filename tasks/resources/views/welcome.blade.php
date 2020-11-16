@@ -31,10 +31,16 @@
             <h3>Add new task</h3>
             <form method="POST" action="/tasks">
             @csrf
+            <select name="user_id">
+                @foreach ($allUsers as $user)
+                    <option>{{$user->id}}</option>
+                @endforeach
+            </select>
                 <input style="border:1px solid black" type="text" name="name" placeholder="Input task name">
                 <input class="button" type="submit" value="Add task">
             </form>
         </div>
+        <div>
 
         <br>
 
@@ -45,20 +51,11 @@
                         <form method="POST" action="/tasks/{{$task->id}}">
                         @csrf
                         @method('DELETE')
-                            <b>{{$task->name}}</b>
+                            <b>{{$task->name}} | User: {{$task->user_id}}</b>
                             <input class="button" type="submit" value="Delete">
                         </form>
                     </div>
                 @endforeach
-        </div>
-
-        <div class="right">
-            <h3>User:</h3>
-            @foreach ($allUsers as $user)
-                <div style="border-bottom:2px solid black">
-                <b>{{$user->name}}</b>
-                </div>
-            @endforeach
         </div>
 </div>
     </body>

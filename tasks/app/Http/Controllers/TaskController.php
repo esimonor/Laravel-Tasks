@@ -40,6 +40,7 @@ class TaskController extends Controller
     {
         \App\Models\Tasks::create([
             'name' => $request->get('name'),
+            'user_id' => $request->get('user_id'),
             ]);
         return redirect('/');
     }
