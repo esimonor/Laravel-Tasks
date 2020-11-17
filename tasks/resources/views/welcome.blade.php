@@ -47,14 +47,18 @@
         <div class="left">
             <h3>To do:</h3>
                 @foreach($allTasks as $task)
-                    <div style="border-bottom:2px solid black">
-                        <form method="POST" action="/tasks/{{$task->id}}">
-                        @csrf
-                        @method('DELETE')
-                            <b>{{$task->name}} | User: {{$task->user_id}}</b>
-                            <input class="button" type="submit" value="Delete">
-                        </form>
-                    </div>
+                    @foreach($allUsers as $user)
+                        @if($user->id == $task->user_id)
+                        <div style="border-bottom:2px solid black">
+                            <form method="POST" action="/tasks/{{$task->id}}">
+                            @csrf
+                            @method('DELETE')
+                                <b>{{$task->name}} | User: {{$user->name}}</b>
+                                <input class="button" type="submit" value="Delete">
+                            </form>
+                        </div>
+                        @endif
+                    @endforeach
                 @endforeach
         </div>
 </div>
