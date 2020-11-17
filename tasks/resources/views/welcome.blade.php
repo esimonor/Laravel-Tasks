@@ -31,7 +31,7 @@
             <h3>Add new task</h3>
             <form method="POST" action="/tasks">
             @csrf
-            <select name="user_id">
+            <select style="border:1px solid black" name="user_id">
                 @foreach ($allUsers as $user)
                     <option>{{$user->id}}</option>
                 @endforeach
