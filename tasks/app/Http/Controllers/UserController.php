@@ -34,6 +34,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|unique:tasks|max:255',
+            'lastname' => 'required',
+        ]);
+
         \App\Models\User::create([
             'name' => $request->get('name'),
             'lastname' => $request->get('lastname'),

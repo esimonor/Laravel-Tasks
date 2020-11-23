@@ -29,6 +29,7 @@
         <div style="display:inline">
         <div class="center" style="border:1px solid black">
             <h3>Add new task</h3>
+
             <form method="POST" action="/tasks">
             @csrf
             <select style="border:1px solid black" name="user_id">
@@ -42,8 +43,17 @@
         </div>
         <div>
 
-        <br>
-
+<!-- Displaying error messages -->
+@if ($errors->any())
+                <div style="border: 2px solid red; background-color:#f55742;">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <!-- End displaying error messages -->
         <div class="left">
             <h3>To do:</h3>
                 @foreach($allTasks as $task)
