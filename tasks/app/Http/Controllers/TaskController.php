@@ -38,10 +38,18 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        \App\Models\Tasks::create([
+        // I got the validation working this way but not with  \Request\StoreTask.php
+        $validatedData = $request->validate([
+            'name' => 'required|unique:tasks|max:255',
+            'user_id' => 'required',
+        ]);
+        // This does what the commented code below does but easier
+        \App\Models\Tasks::create($request->all());
+        
+        /*\App\Models\Tasks::create([
             'name' => $request->get('name'),
             'user_id' => $request->get('user_id'),
-            ]);
+            ]);*/
         return redirect('/');
     }
 

@@ -53,14 +53,14 @@
                             <form method="POST" action="/tasks/{{$task->id}}">
                             @csrf
                             @method('DELETE')
-                                <b>{{$task->name}} | User: {{$user->name}}</b>
+                                <b>{{$task->name}} | User: {{$user->name}} {{$user->lastname}}</b>
                                 <input class="button" type="submit" value="Delete">
                             </form>
                         </div>
                         @endif
                     @endforeach
                 @endforeach
+            </div>
         </div>
-</div>
     </body>
 </html>
